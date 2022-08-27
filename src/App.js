@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Calculator from "./widgets/components/Calculator";
-import Weather from "./widgets/components/Weather";
+import Weather from "./widgets/components/Weather.jsx";
 
 function App() {
   return (

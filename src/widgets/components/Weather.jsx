@@ -11,7 +11,7 @@ const Weather = () => {
   const getWeather = (event) => {
     if (event.key == "Enter") {
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -46,7 +46,7 @@ const Weather = () => {
       ) : (
         <div>
           <p>{weatherData.name}</p>
-          <p>{Math.round(((weatherData.main.temp - 32) * 5) / 9)}°C</p>
+          <p>{Math.round(weatherData.main.temp)} °C</p>
           <img src={loadIcon(weatherData.clouds.all)} />
         </div>
       )}
