@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../style/Weather.css";
-import sunny from "../../assets/sunny.jpg";
-import cloudy from "../../assets/cloudy.jpg";
+import sunny from "../../assets/sunny.png";
+import cloudy from "../../assets/cloudy.png";
 
 const Weather = () => {
   const apiKey = "03a54ffa1ab7576cedf7e4a660a559fe";
@@ -41,13 +41,17 @@ const Weather = () => {
 
       {typeof weatherData.main === "undefined" ? (
         <div>
-          <p>Welcome! Please enter the city to see the weather of.</p>
+          <p style={{ paddingTop: "20px" }}>
+            Welcome! Please enter the city to see the weather of.
+          </p>
         </div>
       ) : (
-        <div>
-          <p>{weatherData.name}</p>
-          <p>{Math.round(((weatherData.main.temp - 32) * 5) / 9)}°C</p>
-          <img src={loadIcon(weatherData.clouds.all)} />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p className="cityName">{weatherData.name}</p>
+          <img className="icon" src={loadIcon(weatherData.clouds.all)} />
+          <p className="temp">
+            {Math.round(((weatherData.main.temp - 32) * 5) / 9)}°C
+          </p>
         </div>
       )}
     </div>
