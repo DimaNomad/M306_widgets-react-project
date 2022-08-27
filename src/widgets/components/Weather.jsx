@@ -49,9 +49,7 @@ const Weather = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <p className="cityName">{weatherData.name}</p>
           <img className="icon" src={loadIcon(weatherData.clouds.all)} />
-          <p className="temp">
-            {Math.round(((weatherData.main.temp - 32) * 5) / 9)}°C
-          </p>
+          <p className="temp">{Math.round(weatherData.main.temp)}°C</p>
         </div>
       )}
     </div>
