@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../style/Calculator.css";
-import { btns, BTN_ACTIONS } from "./btnsConfig";
+import { btns, BTN_ACTIONS, btn_keys } from "./btnsConfig";
 
 const Calculator = () => {
   const btnsRef = useRef(null);
@@ -13,17 +13,46 @@ const Calculator = () => {
     btns.forEach((e) => (e.style.height = e.offsetWidth + "px"));
   }, []);
 
+  const useKeyPress = (callback, targetKeys) => {
+    useEffect(() => {
+      const handleKey = (e) => {
+        const isPresent = targetKeys.find((element) => {
+          return element === e.key;
+        });
+
+        if (isPresent) {
+          console.log(isPresent);
+          callback(e);
+        }
+      };
+      document.addEventListener("keydown", handleKey);
+      return () => {
+        document.removeEventListener("keydown", handleKey);
+      };
+    }, [callback, targetKeys]);
+  };
+
+  const handleKeyPress = (e) => {
+    const found = btns.find((element) => {
+      return element.key === e.key;
+    });
+    console.log(found);
+    btnClick(found);
+  };
+
   const btnClick = (item) => {
     const expDiv = expRef.current;
-
-    if (item.action === BTN_ACTIONS.THEME)
-      document.body.classList.toggle("dark");
 
     if (item.action === BTN_ACTIONS.ADD) {
       addAnimSpan(item.display);
 
       const oper = item.display !== "x" ? item.display : "*";
       setExpression(expression + oper);
+    }
+
+    if (item.action === BTN_ACTIONS.DIVIDE) {
+      const divide = "1/";
+      setExpression(divide + expression);
     }
 
     if (item.action === BTN_ACTIONS.DELETE) {
@@ -83,25 +112,28 @@ const Calculator = () => {
   };
 
   return (
-    <div className="calculatorBody">
-      <div className="calculator">
-        <div className="calculator_result">
-          <div ref={expRef} className="calculator_result_exp"></div>
-          <div className="calculator_result_exp"></div>
-        </div>
-        <div ref={btnsRef} className="calculator_btns">
-          {btns.map((item, index) => (
-            <button
-              key={index}
-              className={item.class}
-              onClick={() => btnClick(item)}
-            >
-              {item.display}
-            </button>
-          ))}
+    useKeyPress(handleKeyPress, btn_keys),
+    (
+      <div className="calculatorBody">
+        <div className="calculator">
+          <div className="calculator_result">
+            <div ref={expRef} className="calculator_result_exp"></div>
+            <div className="calculator_result_exp"></div>
+          </div>
+          <div ref={btnsRef} className="calculator_btns">
+            {btns.map((item, index) => (
+              <button
+                key={index}
+                className={item.class}
+                onClick={() => btnClick(item)}
+              >
+                {item.display}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 export default Calculator;

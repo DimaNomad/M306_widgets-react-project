@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "../style/Weather.css";
+import "../../App.css";
 import sunny from "../../assets/sunny.png";
 import cloudy from "../../assets/cloudy.png";
+
+//TODO insert highest and lowest temp data. maybe add discription of weather from icon data?
+//TODO style: rearrange all data and icon to fit the size of the widget div. colors and font are good atm.
 
 const Weather = () => {
   const apiKey = "03a54ffa1ab7576cedf7e4a660a559fe";
@@ -30,7 +34,7 @@ const Weather = () => {
   };
 
   return (
-    <div>
+    <div className="container glass">
       <input
         className="input"
         placeholder="Enter City..."

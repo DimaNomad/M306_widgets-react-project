@@ -1,18 +1,11 @@
 import React from "react";
 import "./App.css";
-import Calculator from "./widgets/components/Calculator";
-import Weather from "./widgets/components/Weather.jsx";
+import WidgetMenu from "./widgets/components/WidgetMenu";
 
 function App() {
   return (
-    <div className="App">
-      <Calculator></Calculator>
-
-      <div className="container glass">
-        <Weather />
-      </div>
-      <div className="container glass"></div>
-      <div className="container glass"></div>
+    <div>
+      <WidgetMenu />
     </div>
   );
 }
