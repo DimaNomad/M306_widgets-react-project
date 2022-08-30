@@ -52,7 +52,6 @@ const WidgetMenu = () => {
   }, [widgetsArray]);
   return (
     <div className="App">
-      {}
       <div className="menuBody">
         {isOpenWidgetMenu && (
           <div className="widget-menu">

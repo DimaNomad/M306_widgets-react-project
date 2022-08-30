@@ -114,7 +114,6 @@ const Calculator = () => {
   return (
     useKeyPress(handleKeyPress, btn_keys),
     (
-      /*<div className="calculatorBody">*/
       <div className="calculator">
         <div className="calculator_result">
           <div ref={expRef} className="calculator_result_exp"></div>
@@ -133,7 +132,6 @@ const Calculator = () => {
         </div>
       </div>
     )
-    /*</div>*/
   );
 };
 export default Calculator;
