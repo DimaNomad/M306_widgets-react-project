@@ -62,7 +62,7 @@ export default function App() {
 
     //TODO add historical data and format it for ChartJS
 
-    // let historicalDataURL = `${url}/products/${pair}/candles?granularity=86400`;
+    // let historicalDataURL = `${url}/products/${pair}/candles?granularity=86400`; //86400 isch 1 Tag
     // const fetchHistoricalData = async () => {
     //   let dataArr = [];
     //   await fetch(historicalDataURL)
