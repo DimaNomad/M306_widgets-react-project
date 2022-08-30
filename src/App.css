@@ -1,13 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-body,
-html {
-  height: 100%;
+body {
+  background-color: antiquewhite;
 }
+
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
-  background: url(./assets/pawel-nolbert-xe-ss5Tg2mo-unsplash.jpg);
   background-position: center;
   height: 100%;
   background-repeat: no-repeat;
@@ -16,20 +14,15 @@ html {
 }
 
 .container {
-  width: 500px;
-  height: 300px;
-  margin: 20px auto;
+  text-align: center;
+  width: 400px;
+  height: 590px;
+  margin: auto;
 }
 .glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #fff;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.37);
 }

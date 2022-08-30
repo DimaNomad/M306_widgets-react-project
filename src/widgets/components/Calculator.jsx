@@ -114,26 +114,26 @@ const Calculator = () => {
   return (
     useKeyPress(handleKeyPress, btn_keys),
     (
-      <div className="calculatorBody">
-        <div className="calculator">
-          <div className="calculator_result">
-            <div ref={expRef} className="calculator_result_exp"></div>
-            <div className="calculator_result_exp"></div>
-          </div>
-          <div ref={btnsRef} className="calculator_btns">
-            {btns.map((item, index) => (
-              <button
-                key={index}
-                className={item.class}
-                onClick={() => btnClick(item)}
-              >
-                {item.display}
-              </button>
-            ))}
-          </div>
+      /*<div className="calculatorBody">*/
+      <div className="calculator">
+        <div className="calculator_result">
+          <div ref={expRef} className="calculator_result_exp"></div>
+          <div className="calculator_result_exp"></div>
+        </div>
+        <div ref={btnsRef} className="calculator_btns">
+          {btns.map((item, index) => (
+            <button
+              key={index}
+              className={item.class}
+              onClick={() => btnClick(item)}
+            >
+              {item.display}
+            </button>
+          ))}
         </div>
       </div>
     )
+    /*</div>*/
   );
 };
 export default Calculator;

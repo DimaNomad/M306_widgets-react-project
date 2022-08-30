@@ -1,20 +1,106 @@
+.menuBody {
+  display: flex;
+  flex-direction: wrap;
+  justify-content: end;
+  height: 100px;
+  width: 150px;
+  align-self: flex-end;
+  margin-right: 60px;
+}
+
 .widgetButton {
   background: none;
   border: 0;
   outline: 0;
   color: rgb(78, 164, 230);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.widgetButton:hover {
+  color: rgb(180, 26, 83);
 }
 
-.widgetMenu {
+.widget-menu {
   display: flex;
   flex-direction: column;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: rgb(40, 40, 43);
-  width: 40px;
-  height: 125px;
+  width: 50px;
+  height: 200px;
   padding: 10px;
-  margin: auto;
+  padding-left: 10px;
   margin-top: 50px;
   align-items: center;
+  transition: 0.5s ease-in-out;
+  border: 3px solid #fff;
+  margin-right: 20px;
+}
+
+.menu-btn {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(40, 40, 43);
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+.menu-btn__burger {
+  width: 40px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before {
+  transform: translateY(-14px);
+}
+.menu-btn__burger::after {
+  transform: translateY(14px);
+}
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.wrapper {
+  display: flex;
+  width: 460px;
+  margin: auto;
+  overflow: hidden;
+  height: 0px;
+  transition: height ease-in-out 0.5s;
+}
+
+.componentsList {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  margin: auto;
+  list-style-type: none;
 }
