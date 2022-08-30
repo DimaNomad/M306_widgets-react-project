@@ -6,6 +6,7 @@ import { AiOutlineStock } from "react-icons/ai";
 import { useState, useEffect, useRef } from "react";
 import Calculator from "./Calculator";
 import Weather from "./Weather";
+import Crypto from "./Crypto";
 import DragAndDrop from "./DragAndDrop.tsx";
 import "../style/WidgetMenu.css";
 import "../../App.css";
@@ -25,6 +26,11 @@ const WidgetMenu = () => {
       component: <Weather />,
       open: false,
       id: "weather",
+    },
+    {
+      component: <Crypto />,
+      open: false,
+      id: "crypto",
     },
   ];
 
