@@ -96,25 +96,33 @@ const Weather = () => {
           <p className="cityName">{weatherData.name}</p>
           <div className="iconDiv">
             {weatherData.clouds.all < 15 ? <TiWeatherSunny size={60} /> : null}
-            {weatherData.clouds.all > 15 && weatherData.clouds.all < 30 ? (
+            {weatherData.clouds.all >= 15 && weatherData.clouds.all < 30 ? (
               <TiWeatherPartlySunny size={60} />
             ) : null}
-            {weatherData.clouds.all > 30 && weatherData.clouds.all < 45 ? (
+            {weatherData.clouds.all >= 30 && weatherData.clouds.all < 45 ? (
               <TiWeatherCloudy size={60} />
             ) : null}
-            {weatherData.clouds.all > 45 && weatherData.clouds.all < 60 ? (
+            {weatherData.clouds.all >= 45 && weatherData.clouds.all < 60 ? (
               <TiWeatherShower size={60} />
             ) : null}
-            {weatherData.clouds.all > 60 && weatherData.clouds.all < 75 ? (
+            {weatherData.clouds.all >= 60 && weatherData.clouds.all < 75 ? (
               <TiWeatherDownpour size={60} />
             ) : null}
-            {weatherData.clouds.all > 75 ? <TiWeatherStormy size={60} /> : null}
+            {weatherData.clouds.all >= 75 ? (
+              <TiWeatherStormy size={60} />
+            ) : null}
           </div>
           <p className="temp">{Math.round(weatherData.main.temp)}°C</p>
           <div className="tempHL">
-            <p className="H">H:40</p>
-            <p className="H">L:30</p>
+            <p className="H">H:{weatherData.main.temp_max}°C</p>
+            <p className="H">L:{weatherData.main.temp_min}°C</p>
           </div>
+          <hr></hr>
+          <p className="H">Humidity: {weatherData.main.humidity}%</p>
+          <hr></hr>
+          <p className="H">Wind: {weatherData.wind.speed}km/h</p>
+          <hr></hr>
+          <p className="H">Pressure: {weatherData.main.pressure}hPa</p>
         </div>
       )}
     </div>
