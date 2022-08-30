@@ -37,7 +37,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
                         style={
                           open
                             ? {
-                                height: "630px",
+                                height: "545px",
                               }
                             : { height: "0px" }
                         }

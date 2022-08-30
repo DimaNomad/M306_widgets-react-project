@@ -11,9 +11,6 @@ import "../style/WidgetMenu.css";
 import "../../App.css";
 
 const WidgetMenu = () => {
-  const [isOpenCalculator, setIsOpenCalculator] = useState(false);
-  const [isOpenWeather, setIsOpenWeather] = useState(false);
-  const [isOpenCrypto, setIsOpenCrypto] = useState(false);
   const [isOpenWidgetMenu, setIsOpenWidgetMenu] = useState(false);
 
   const [key, setKey] = useState(0);
@@ -26,7 +23,7 @@ const WidgetMenu = () => {
     },
     {
       component: <Weather />,
-      open: true,
+      open: false,
       id: "weather",
     },
   ];
@@ -79,19 +76,43 @@ const WidgetMenu = () => {
             </button>
             <button
               className="widgetButton"
-              onClick={() => setIsOpenWeather(!isOpenWeather)}
+              onClick={() => {
+                const found = widgetsArray.findIndex((element) => {
+                  return element.id === "weather";
+                });
+                if (found >= 0) {
+                  widgetsArray[found].open = !widgetsArray[found].open;
+                  setKey(key + 1);
+                }
+              }}
             >
               <TiWeatherPartlySunny size={40} />
             </button>
             <button
               className="widgetButton"
-              onClick={() => setIsOpenCrypto(!isOpenCrypto)}
+              onClick={() => {
+                const found = widgetsArray.findIndex((element) => {
+                  return element.id === "crypto";
+                });
+                if (found >= 0) {
+                  widgetsArray[found].open = !widgetsArray[found].open;
+                  setKey(key + 1);
+                }
+              }}
             >
               <SiBitcoinsv size={36} />
             </button>
             <button
               className="widgetButton"
-              onClick={() => setIsOpenCrypto(!isOpenCrypto)}
+              onClick={() => {
+                const found = widgetsArray.findIndex((element) => {
+                  return element.id === "stock";
+                });
+                if (found >= 0) {
+                  widgetsArray[found].open = !widgetsArray[found].open;
+                  setKey(key + 1);
+                }
+              }}
             >
               <AiOutlineStock size={40} />
             </button>

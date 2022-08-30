@@ -127,7 +127,7 @@ export const btns = [
   {
     display: "C",
     action: BTN_ACTIONS.DELETE,
-    class: "",
+    class: "btn_del",
     key: "Clear",
   },
   {

@@ -16,7 +16,7 @@ body {
 .container {
   text-align: center;
   width: 400px;
-  height: 590px;
+  height: 510px;
   margin: auto;
 }
 .glass {
@@ -24,5 +24,5 @@ body {
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.37);
 }
