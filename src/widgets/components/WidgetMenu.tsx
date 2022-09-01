@@ -4,10 +4,10 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiBitcoinsv } from "react-icons/si";
 import { AiOutlineStock } from "react-icons/ai";
 import { useState, useEffect, useRef } from "react";
-import Calculator from "./Calculator";
+import DragAndDrop from "./DragAndDrop.tsx";
+import Calculator from "./Calculator.tsx";
 import Weather from "./Weather";
 import Crypto from "./Crypto";
-import DragAndDrop from "./DragAndDrop.tsx";
 import "../style/WidgetMenu.css";
 import "../../App.css";
 
@@ -36,6 +36,18 @@ const WidgetMenu = () => {
 
   const [widgetsArray, updateWidgetsArray] = useState(widgets);
 
+  const handleCloseButton = (event, id, open) => {
+    console.log("clicked");
+    const found = widgetsArray.findIndex((element) => {
+      return element.id === id;
+    });
+    console.log(found);
+    if (found >= 0) {
+      widgetsArray[found].open = !open;
+      setKey(key + 1);
+    }
+  };
+
   function handleOnDragEnd(result) {
     const items = Array.from(widgetsArray);
     const [recordedItem] = items.splice(result.source.index, 1);
@@ -46,15 +58,17 @@ const WidgetMenu = () => {
   useEffect(() => {
     const menuBtn = document.querySelector(".menu-btn");
     let menuOpen = false;
-    menuBtn.addEventListener("click", () => {
-      if (!menuOpen) {
-        menuBtn.classList.add("open");
-        menuOpen = true;
-      } else {
-        menuBtn.classList.remove("open");
-        menuOpen = false;
-      }
-    });
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        if (!menuOpen) {
+          menuBtn.classList.add("open");
+          menuOpen = true;
+        } else {
+          menuBtn.classList.remove("open");
+          menuOpen = false;
+        }
+      });
+    }
   }, [widgetsArray]);
   return (
     <div className="App">
@@ -124,13 +138,14 @@ const WidgetMenu = () => {
           </div>
         )}
         <div
-          class="menu-btn"
+          className="menu-btn"
           onClick={() => setIsOpenWidgetMenu(!isOpenWidgetMenu)}
         >
-          <div class="menu-btn__burger"></div>
+          <div className="menu-btn__burger"></div>
         </div>
       </div>
       <DragAndDrop
+        handleCloseButton={handleCloseButton}
         widgetArray={widgetsArray}
         handleOnDragEnd={handleOnDragEnd}
       />

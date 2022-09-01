@@ -3,6 +3,7 @@ export const BTN_ACTIONS = {
   DIVIDE: "DIVIDE",
   CALC: "CALC",
   DELETE: "DELETE",
+  DELETELAST: "DELETELAST",
 };
 
 export const btn_keys = [
@@ -23,11 +24,17 @@ export const btn_keys = [
   "-",
   "*",
   "/",
-  "(",
-  ")",
+  "%",
+  "Backspace",
 ];
 
 export const btns = [
+  {
+    display: "CE",
+    action: BTN_ACTIONS.DELETELAST,
+    class: "btn_op",
+    key: "Backspace",
+  },
   {
     display: "1/x",
     action: BTN_ACTIONS.DIVIDE,
@@ -35,16 +42,10 @@ export const btns = [
     key: "",
   },
   {
-    display: "(",
+    display: "%",
     action: BTN_ACTIONS.ADD,
     class: "btn_op",
-    key: "(",
-  },
-  {
-    display: ")",
-    action: BTN_ACTIONS.ADD,
-    class: "btn_op",
-    key: ")",
+    key: "%",
   },
   {
     display: "/",

@@ -97,6 +97,15 @@
   transition: height ease-in-out 0.5s;
 }
 
+.closeButton {
+  text-align: center;
+  position: relative;
+  left: 49px;
+  top: 28px;
+  height: 21px;
+  box-shadow: 0 0.5px 0 0 grey;
+}
+
 .componentsList {
   display: flex;
   flex-direction: column;

@@ -8,9 +8,6 @@ import { TiWeatherShower } from "react-icons/ti";
 import { TiWeatherDownpour } from "react-icons/ti";
 import { TiWeatherStormy } from "react-icons/ti";
 
-//TODO insert highest and lowest temp data. maybe add discription of weather from icon data?
-//TODO style: rearrange all data and icon to fit the size of the widget div. colors and font are good atm.
-
 const Weather = () => {
   const apiKey = "03a54ffa1ab7576cedf7e4a660a559fe";
   const [weatherData, setWeatherData] = useState([{}]);

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import WidgetMenu from "./widgets/components/WidgetMenu";
+import WidgetMenu from "./widgets/components/WidgetMenu.tsx";
 
 function App() {
   return (

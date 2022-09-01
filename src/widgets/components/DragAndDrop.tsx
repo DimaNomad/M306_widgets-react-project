@@ -6,11 +6,11 @@ import "../style/WidgetMenu.css";
 interface DragAndDropProps {
   widgetArray: any;
   handleOnDragEnd: any;
-  widgetRef: any;
+  handleCloseButton: any;
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
-  const { widgetArray, handleOnDragEnd, widgetRef } = props;
+  const { widgetArray, handleOnDragEnd, handleCloseButton } = props;
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -33,7 +33,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
                     >
                       <div
                         className="wrapper"
-                        ref={widgetRef}
                         style={
                           open
                             ? {
@@ -42,6 +41,18 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
                             : { height: "0px" }
                         }
                       >
+                        <div
+                          className="closeButton"
+                          onClick={(event) =>
+                            handleCloseButton(
+                              event,
+                              widgetArray[index].id,
+                              widgetArray[index].open
+                            )
+                          }
+                        >
+                          x
+                        </div>
                         {component}
                       </div>
                     </li>
