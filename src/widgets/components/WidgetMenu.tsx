@@ -72,9 +72,9 @@ const WidgetMenu = () => {
   }, [widgetsArray]);
   return (
     <div className="App">
-      <div className="menuBody">
-        {isOpenWidgetMenu && (
-          <div className="widget-menu">
+      <div className={isOpenWidgetMenu ? "menuBodyOpen" : "menuBody"}>
+        <ul>
+          <li>
             <button
               id="myInputID"
               className="widgetButton"
@@ -91,8 +91,10 @@ const WidgetMenu = () => {
                 e.key === "Enter" && e.preventDefault();
               }}
             >
-              <BsCalculatorFill size={40} />
+              <BsCalculatorFill size={35} />
             </button>
+          </li>
+          <li>
             <button
               className="widgetButton"
               onClick={() => {
@@ -107,6 +109,8 @@ const WidgetMenu = () => {
             >
               <TiWeatherPartlySunny size={40} />
             </button>
+          </li>
+          <li>
             <button
               className="widgetButton"
               onClick={() => {
@@ -121,6 +125,8 @@ const WidgetMenu = () => {
             >
               <SiBitcoinsv size={36} />
             </button>
+          </li>
+          <li>
             <button
               className="widgetButton"
               onClick={() => {
@@ -135,8 +141,8 @@ const WidgetMenu = () => {
             >
               <AiOutlineStock size={40} />
             </button>
-          </div>
-        )}
+          </li>
+        </ul>
         <div
           className="menu-btn"
           onClick={() => setIsOpenWidgetMenu(!isOpenWidgetMenu)}
