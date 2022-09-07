@@ -35,22 +35,9 @@ const App = () => {
   const [key, setKey] = useState(0);
 
   const handleCloseButton = (event, id, open) => {
-    console.log("clicked");
     const found = widgetsArray.findIndex((element) => {
       return element.id === id;
     });
-    console.log(found);
-    if (found >= 0) {
-      widgetsArray[found].open = !open;
-      setKey(key + 1);
-    }
-  };
-  const handleIconClick = (event, id, open) => {
-    console.log("clicked");
-    const found = widgetsArray.findIndex((element) => {
-      return element.id === id;
-    });
-    console.log(found);
     if (found >= 0) {
       widgetsArray[found].open = !open;
       setKey(key + 1);
@@ -69,7 +56,7 @@ const App = () => {
     <div className="App">
       <WidgetMenu
         widgetArray={widgetsArray}
-        handleIconClick={handleIconClick}
+        handleIconClick={handleCloseButton}
       />
       <DragAndDrop
         handleCloseButton={handleCloseButton}

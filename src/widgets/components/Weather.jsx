@@ -76,7 +76,7 @@ const Weather = () => {
     <div className="container glass">
       <input
         className="input"
-        placeholder="Enter City..."
+        placeholder="Enter city..."
         onChange={(e) => setCity(e.target.value)}
         value={city}
         onKeyPress={getWeather}

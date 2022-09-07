@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import Axios from "axios";
+import "../style/Crypto.css";
+import CryptoExtra from "./CryptoExtra.tsx";
 
 const Crypto = () => {
   // const [currencies, setcurrencies] = useState([]);
@@ -99,9 +102,83 @@ const Crypto = () => {
   //   setpair(e.target.value);
   // };
   // TODO make show in center of widget
+  const [listOfCoins, setListOfCoins] = useState([]);
+  const [newListOfCoins, setNewListOfCoins] = useState([]);
+  const [key, setKey] = useState(0);
+  const [searchWord, setSearchWord] = useState("");
+
+  useEffect(() => {
+    Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&").then(
+      (response) => {
+        const newArr = response.data.coins;
+        newArr.forEach((object: any) => {
+          object.open = false;
+        });
+        setListOfCoins(newArr);
+      }
+    );
+  }, []);
+
+  const filteredList = listOfCoins.filter((coin: any) => {
+    return coin.name.toLowerCase().includes(searchWord.toLowerCase());
+  });
+
+  const handleRowClick = (arr: any, index) => {
+    arr[index].open = !arr[index].open;
+    setListOfCoins(arr);
+    setKey(key + 1);
+    // newList[index].open = !newList[index].open;
+  };
+
   return (
     <div className="container glass">
-      Crypto
+      <div className="cryptoHeader">
+        <input
+          className="input"
+          type="text"
+          placeholder="Enter coin name..."
+          onChange={(event) => {
+            setSearchWord(event.target.value);
+          }}
+        ></input>
+      </div>
+      <div className="cryptoDisplay">
+        <div className="legend">
+          <p>Name</p>
+          <p>Price</p>
+          <p>24h Change</p>
+        </div>
+        {filteredList.map((coin: any, index) => {
+          return (
+            <div>
+              <div
+                id={coin.name}
+                className="cryptoRow"
+                onClick={() => handleRowClick(listOfCoins, index)}
+              >
+                <img className="cryptoIcon" src={coin.icon} />
+                <div>{coin.name}</div>
+                <div>${coin.price.toFixed(2)}</div>
+                <div
+                  className={
+                    coin.priceChange1d > 0 ? "pricePlus" : "priceMinus"
+                  }
+                >
+                  {coin.priceChange1d}%
+                </div>
+              </div>
+              <CryptoExtra
+                rank={coin.rank}
+                symbol={coin.symbol}
+                vol={coin.volume}
+                cap={coin.marketCap}
+                arr={listOfCoins[index].open}
+                link={coin.websiteUrl}
+              />
+            </div>
+          );
+        })}
+      </div>
       {/* {
         <select name="currency" value={pair} onChange={handleSelect}>
           {currencies.map((cur, idx) => {

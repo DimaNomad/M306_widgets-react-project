@@ -3,7 +3,7 @@ import { BsCalculatorFill } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiBitcoinsv } from "react-icons/si";
 import { AiOutlineStock } from "react-icons/ai";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "../style/WidgetMenu.css";
 import "../../App.css";
 

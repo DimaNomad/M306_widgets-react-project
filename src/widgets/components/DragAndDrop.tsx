@@ -1,6 +1,5 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import React from "react";
-import { useRef, useEffect } from "react";
 import "../style/WidgetMenu.css";
 
 interface DragAndDropProps {
