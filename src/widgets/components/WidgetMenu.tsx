@@ -4,57 +4,19 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiBitcoinsv } from "react-icons/si";
 import { AiOutlineStock } from "react-icons/ai";
 import { useState, useEffect, useRef } from "react";
-import DragAndDrop from "./DragAndDrop.tsx";
-import Calculator from "./Calculator.tsx";
-import Weather from "./Weather";
-import Crypto from "./Crypto";
 import "../style/WidgetMenu.css";
 import "../../App.css";
 
-const WidgetMenu = () => {
+interface WidgetMenuProps {
+  widgetArray: any;
+  handleIconClick: any;
+}
+
+const WidgetMenu: React.FC<WidgetMenuProps> = (props: WidgetMenuProps) => {
+  const { widgetArray, handleIconClick } = props;
+
   const [isOpenWidgetMenu, setIsOpenWidgetMenu] = useState(false);
 
-  const [key, setKey] = useState(0);
-
-  const widgets = [
-    {
-      component: <Calculator />,
-      open: false,
-      id: "calculator",
-    },
-    {
-      component: <Weather />,
-      open: false,
-      id: "weather",
-    },
-    {
-      component: <Crypto />,
-      open: false,
-      id: "crypto",
-    },
-  ];
-
-  const [widgetsArray, updateWidgetsArray] = useState(widgets);
-
-  const handleCloseButton = (event, id, open) => {
-    console.log("clicked");
-    const found = widgetsArray.findIndex((element) => {
-      return element.id === id;
-    });
-    console.log(found);
-    if (found >= 0) {
-      widgetsArray[found].open = !open;
-      setKey(key + 1);
-    }
-  };
-
-  function handleOnDragEnd(result) {
-    const items = Array.from(widgetsArray);
-    const [recordedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, recordedItem);
-
-    updateWidgetsArray(items);
-  }
   useEffect(() => {
     const menuBtn = document.querySelector(".menu-btn");
     let menuOpen = false;
@@ -69,92 +31,78 @@ const WidgetMenu = () => {
         }
       });
     }
-  }, [widgetsArray]);
+  }, [widgetArray]);
+
+  const getOpenId = (array, id) => {
+    const found = array.findIndex((element) => {
+      return element.id === id;
+    });
+    if (found >= 0) {
+      return array[found].open;
+    }
+  };
   return (
-    <div className="App">
-      <div className={isOpenWidgetMenu ? "menuBodyOpen" : "menuBody"}>
-        <ul>
-          <li>
-            <button
-              id="myInputID"
-              className="widgetButton"
-              onClick={() => {
-                const found = widgetsArray.findIndex((element) => {
-                  return element.id === "calculator";
-                });
-                if (found >= 0) {
-                  widgetsArray[found].open = !widgetsArray[found].open;
-                  setKey(key + 1);
-                }
-              }}
-              onKeyDown={(e) => {
-                e.key === "Enter" && e.preventDefault();
-              }}
-            >
-              <BsCalculatorFill size={35} />
-            </button>
-          </li>
-          <li>
-            <button
-              className="widgetButton"
-              onClick={() => {
-                const found = widgetsArray.findIndex((element) => {
-                  return element.id === "weather";
-                });
-                if (found >= 0) {
-                  widgetsArray[found].open = !widgetsArray[found].open;
-                  setKey(key + 1);
-                }
-              }}
-            >
-              <TiWeatherPartlySunny size={40} />
-            </button>
-          </li>
-          <li>
-            <button
-              className="widgetButton"
-              onClick={() => {
-                const found = widgetsArray.findIndex((element) => {
-                  return element.id === "crypto";
-                });
-                if (found >= 0) {
-                  widgetsArray[found].open = !widgetsArray[found].open;
-                  setKey(key + 1);
-                }
-              }}
-            >
-              <SiBitcoinsv size={36} />
-            </button>
-          </li>
-          <li>
-            <button
-              className="widgetButton"
-              onClick={() => {
-                const found = widgetsArray.findIndex((element) => {
-                  return element.id === "stock";
-                });
-                if (found >= 0) {
-                  widgetsArray[found].open = !widgetsArray[found].open;
-                  setKey(key + 1);
-                }
-              }}
-            >
-              <AiOutlineStock size={40} />
-            </button>
-          </li>
-        </ul>
-        <div
-          className="menu-btn"
-          onClick={() => setIsOpenWidgetMenu(!isOpenWidgetMenu)}
-        >
-          <div className="menu-btn__burger"></div>
-        </div>
+    <div className={isOpenWidgetMenu ? "menuBodyOpen" : "menuBody"}>
+      <ul>
+        <li>
+          <button
+            id="myInputID"
+            className="widgetButton"
+            onClick={(event) =>
+              handleIconClick(
+                event,
+                "calculator",
+                getOpenId(widgetArray, "calculator")
+              )
+            }
+            onKeyDown={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
+          >
+            <BsCalculatorFill size={35} />
+          </button>
+        </li>
+        <li>
+          <button
+            className="widgetButton"
+            onClick={(event) =>
+              handleIconClick(
+                event,
+                "weather",
+                getOpenId(widgetArray, "weather")
+              )
+            }
+          >
+            <TiWeatherPartlySunny size={40} />
+          </button>
+        </li>
+        <li>
+          <button
+            className="widgetButton"
+            onClick={(event) =>
+              handleIconClick(event, "crypto", getOpenId(widgetArray, "crypto"))
+            }
+          >
+            <SiBitcoinsv size={36} />
+          </button>
+        </li>
+        <li>
+          <button
+            className="widgetButton"
+            onClick={(event) =>
+              handleIconClick(event, "stocks", getOpenId(widgetArray, "stocks"))
+            }
+          >
+            <AiOutlineStock size={40} />
+          </button>
+        </li>
+      </ul>
+      <div
+        className="menu-btn"
+        onClick={() => setIsOpenWidgetMenu(!isOpenWidgetMenu)}
+      >
+        <div className="menu-btn__burger"></div>
       </div>
-      <DragAndDrop
-        handleCloseButton={handleCloseButton}
-        widgetArray={widgetsArray}
-        handleOnDragEnd={handleOnDragEnd}
-      />
     </div>
   );
 };
