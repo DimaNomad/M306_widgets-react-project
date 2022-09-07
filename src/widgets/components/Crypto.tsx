@@ -150,7 +150,7 @@ const Crypto = () => {
         </div>
         {filteredList.map((coin: any, index) => {
           return (
-            <div>
+            <div key={coin.name}>
               <div
                 id={coin.name}
                 className="cryptoRow"
