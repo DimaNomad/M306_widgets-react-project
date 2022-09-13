@@ -135,8 +135,8 @@
 .closeButton {
   text-align: center;
   position: relative;
-  left: 49px;
-  top: 28px;
+  left: 25px;
+  top: 14px;
   height: 21px;
   box-shadow: 0 0.5px 0 0 grey;
 }

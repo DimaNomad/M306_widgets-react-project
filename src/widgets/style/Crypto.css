@@ -17,7 +17,7 @@
   justify-content: space-around;
   color: grey;
   font-size: 0.8em;
-  margin-bottom: 10px;
+  line-height: 5px;
 }
 .legend p {
   width: 30%;
