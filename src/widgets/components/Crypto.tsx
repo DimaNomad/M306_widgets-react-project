@@ -102,8 +102,7 @@ const Crypto = () => {
   //   setpair(e.target.value);
   // };
   // TODO make show in center of widget
-  const [listOfCoins, setListOfCoins] = useState([]);
-  const [newListOfCoins, setNewListOfCoins] = useState([]);
+  const [listOfCoins, setListOfCoins] = useState([]) as any;
   const [key, setKey] = useState(0);
   const [searchWord, setSearchWord] = useState("");
 

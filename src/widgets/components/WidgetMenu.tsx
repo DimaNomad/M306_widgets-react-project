@@ -2,7 +2,7 @@ import React from "react";
 import { BsCalculatorFill } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiBitcoinsv } from "react-icons/si";
-import { AiOutlineStock } from "react-icons/ai";
+import { GiNewspaper } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import "../style/WidgetMenu.css";
 import "../../App.css";
@@ -93,7 +93,7 @@ const WidgetMenu: React.FC<WidgetMenuProps> = (props: WidgetMenuProps) => {
               handleIconClick(event, "stocks", getOpenId(widgetArray, "stocks"))
             }
           >
-            <AiOutlineStock size={40} />
+            <GiNewspaper size={40} />
           </button>
         </li>
       </ul>

@@ -1,14 +1,10 @@
 .menuBody {
   display: flex;
-  align-self: flex-end;
-  margin-right: 100px;
-  margin-top: 50px;
+  margin: auto;
 }
 .menuBodyOpen {
   display: flex;
-  align-self: flex-end;
-  margin-right: 100px;
-  margin-top: 50px;
+  margin: auto;
 }
 
 .widgetButton {
@@ -27,16 +23,16 @@
 }
 
 .widgetButton:hover {
-  background-color: rgba(40, 40, 43, 0.8);
-  width: 70px;
-  height: 70px;
+  background-color: rgba(40, 40, 43, 0.7);
+  scale: 1.2;
 }
 .menuBody li {
   position: absolute;
   list-style-type: none;
   z-index: 1;
-  top: 110px;
-  right: 110px;
+  top: 60px;
+  margin: auto;
+  margin-left: 8px;
   transition: all 0.8s ease-in-out;
 }
 
@@ -44,30 +40,34 @@
   position: absolute;
   list-style-type: none;
   z-index: 1;
-  top: 110px;
-  right: 110px;
+  top: 60px;
+  margin: auto;
+  margin-left: 8px;
   transition: all 0.5s ease-in-out;
 }
 .menuBodyOpen li:nth-child(1) {
-  transform: rotate(-360deg) translateY(-80px);
+  transform: rotate(-450deg) translateY(-80px);
 }
 .menuBodyOpen li:nth-child(2) {
-  transform: rotate(-420deg) translateY(-80px);
+  transform: rotate(-510deg) translateY(-80px);
 }
 .menuBodyOpen li:nth-child(3) {
-  transform: rotate(-480deg) translateY(-80px);
+  transform: rotate(-570deg) translateY(-80px);
 }
 .menuBodyOpen li:nth-child(4) {
-  transform: rotate(-540deg) translateY(-80px);
+  transform: rotate(-630deg) translateY(-80px);
+}
+.menuBodyOpen li:nth-child(1) button {
+  transform: rotate(90deg);
 }
 .menuBodyOpen li:nth-child(2) button {
-  transform: rotate(60deg);
+  transform: rotate(150deg);
 }
 .menuBodyOpen li:nth-child(3) button {
-  transform: rotate(120deg);
+  transform: rotate(210deg);
 }
 .menuBodyOpen li:nth-child(4) button {
-  transform: rotate(180deg);
+  transform: rotate(270deg);
 }
 .menu-btn {
   margin-top: 50px;
@@ -124,6 +124,7 @@
 
 .wrapper {
   display: flex;
+
   width: 460px;
   margin: auto;
   overflow: hidden;
@@ -143,6 +144,7 @@
 .componentsList {
   display: flex;
   flex-direction: column;
+  padding-top: 100px;
   width: 460px;
   margin: auto;
   list-style-type: none;

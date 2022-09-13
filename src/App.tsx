@@ -5,7 +5,7 @@ import DragAndDrop from "./widgets/components/DragAndDrop.tsx";
 import Weather from "./widgets/components/Weather.jsx";
 import Crypto from "./widgets/components/Crypto.tsx";
 import WidgetMenu from "./widgets/components/WidgetMenu.tsx";
-import Stocks from "./widgets/components/Stocks.tsx";
+import News from "./widgets/components/News.tsx";
 
 const App = () => {
   const widgets = [
@@ -25,7 +25,7 @@ const App = () => {
       id: "crypto",
     },
     {
-      component: <Stocks />,
+      component: <News />,
       open: false,
       id: "stocks",
     },
