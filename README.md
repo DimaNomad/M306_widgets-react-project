@@ -5,7 +5,7 @@ To start this project you need to install the latest versions of yarn and node.
 To do so install homebrew and type following commands in terminal:
 
     brew install yarn (install yarn for the first time)
-    brew updgrade yarn (upgrade yarn if you have an older version)
+    brew upgrade yarn (upgrade yarn if you have an older version)
     brew upgrade node
 
 After that open up terminal within the project and run:
