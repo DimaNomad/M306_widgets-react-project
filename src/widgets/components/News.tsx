@@ -3,22 +3,6 @@ import React, { useEffect, useState } from "react";
 import "../style/News.css";
 import paper from "../../assets/paper.png";
 
-// const options = {
-//   method: "GET",
-//   url: "https://bing-news-search1.p.rapidapi.com/news",
-//   params: {
-//     count: "50",
-//     safeSearch: "Off",
-//     textFormat: "Raw",
-//     interval: "1sek",
-//   },
-//   headers: {
-//     "X-BingApis-SDK": "false",
-//     "X-RapidAPI-Key": "28774575e6msh9b3abc372782736p1f764djsn15dc9f5b0571",
-//     "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
-//   },
-// };
-
 const News = () => {
   const [newsList, setNewsList] = useState([]);
   const [key, setKey] = useState(0);
